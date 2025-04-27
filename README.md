@@ -114,7 +114,7 @@ This command spawns a glowing, bouncing sphere at another player’s location.
 
 
 ### Example:
-`spawnball 2 0.7 0.7 0.7 2.0 10.0 1.2 0.3 Extrapolate 0.6 0.5 0.4 Maximum 0.1 2.13 180 1.5 1 2.7 false false 0.1`
+`spawnball 2 0.7 0.7 0.7 0.35 1.6 1.2 0.3 Interpolate 0.6 0.5 0.4 Maximum 0.1 2.13 34 1.5 1 2.7 false false 0.1`
 
 ## BouncyBall API Documentation for Developers
 
