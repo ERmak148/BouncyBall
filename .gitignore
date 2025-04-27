@@ -1,0 +1,9 @@
+.git
+.idea
+packages
+BouncyBall.sln
+BouncyBall.sln.DotSettings.user
+BouncyBall/bin
+BouncyBall/obj
+BouncyBall/packages.config
+BouncyBall/Properties
