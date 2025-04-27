@@ -26,8 +26,7 @@ namespace BouncyBall
         private bool checkOnlyDistance = false;
         private bool destroyDoors = false;
         private float destroyDoorMaxDistanse = 0.5f;
-
-
+        
         public void Init(LightSourceToy lightSourceToy, Primitive primitive, float changespeed, float vd = 2.13f,
             float maxangle = 34, float maxdistance = 1.5f, float kickforcemul = 1f, float kickforceup = 2.7f,
             bool checkonlydistance = false, bool destroydoors = false, float destroydoormaxdistance = 0.5f)
@@ -63,7 +62,7 @@ namespace BouncyBall
                 
                     horizontalAngle = Mathf.Abs(horizontalAngle);
                     verticalAngle = Mathf.Abs(verticalAngle);
-                
+                    
                     if (horizontalAngle < maxAngle && verticalAngle < maxAngle/verticaldivider)
                     {
                         bool hasLineOfSight = Physics.Raycast(near.CameraTransform.position, 
