@@ -10,12 +10,17 @@ spawnballsimple - spawn default bouncy ball at you position
 
 spawnball - spawn customizable ball
 
+despawnball <BallId/*> - despawns the ball / all balls
+
+listballs - lists all registered balls
+
 
 ### `spawnball` Command Arguments Description
 
 This command spawns a glowing, bouncing sphere at another player’s location.
 
 <details>
+
 1. **PlayerId**  
    - The numeric ID of the player whose position the ball will appear at.  
    - *Example:* `2`  
@@ -216,6 +221,7 @@ This method spawns a bouncy ball at a given position with customizable propertie
     - **Description**: The maximum distance at which the ball can destroy doors when it collides with them.
     - **Example**: `2.0f`
 </details>
+
 ---
 
 ### Example Usage:
