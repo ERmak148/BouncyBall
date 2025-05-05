@@ -12,6 +12,8 @@ namespace BouncyBall
     public class Ball : MonoBehaviour
     {
         private LightSourceToy ls;
+        public LightSourceToy LightSource => ls;
+        
         private Primitive ball;
         private float colorTime = 0;
         private Rigidbody rb;

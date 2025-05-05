@@ -78,6 +78,8 @@ namespace BouncyBall
                 ball.AdminToyBase.gameObject.AddComponent<SphereCollider>().material = material;
 
                 ball.AdminToyBase.gameObject.AddComponent<Ball>().Init(ls, ball, 0.1f);
+                
+                BallRegistry.RegisterBall(ball.AdminToyBase.gameObject.GetComponent<Ball>());
             });
             response = "Bouncy ball successfully spawned!";
             return true;

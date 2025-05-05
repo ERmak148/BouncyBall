@@ -241,6 +241,8 @@ namespace BouncyBall
                 ball.AdminToyBase.gameObject.AddComponent<SphereCollider>().material = material;
                 ball.AdminToyBase.gameObject.AddComponent<Ball>().Init(
                     ls, ball, changeSpeed, verticalDivider, maxAngle, maxDistance, kickForceMul, kickForceUp, checkOnlyDistance, destroyDoors, destroyDoorMaxDistance);
+                
+                BallRegistry.RegisterBall(ball.AdminToyBase.gameObject.GetComponent<Ball>());
             });
 
             response = "Bouncy ball successfully spawned!";

@@ -76,7 +76,7 @@ namespace BouncyBall
             
             NetworkServer.Spawn(ls.gameObject);
             NetworkServer.Spawn(ball.AdminToyBase.gameObject);
-
+            
             Timing.CallDelayed(0.05f, () =>
             {
                 Rigidbody rb = ball.AdminToyBase.gameObject.AddComponent<Rigidbody>();
@@ -94,6 +94,8 @@ namespace BouncyBall
                 ball.AdminToyBase.gameObject.AddComponent<SphereCollider>().material = material;
                 ball.AdminToyBase.gameObject.AddComponent<Ball>().Init(
                     ls, ball, colorChangeSpeed, screenVerticalDiv, maxLookAngle, maxPlayerDistance, kickForceMul, kickForceUp, checkOnlyDistance, destroyDoors, destroyDoorMaxDistance);
+                
+                BallRegistry.RegisterBall(ball.AdminToyBase.gameObject.GetComponent<Ball>());
             });
         }
     }
