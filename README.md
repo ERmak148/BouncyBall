@@ -220,6 +220,12 @@ This method spawns a bouncy ball at a given position with customizable propertie
 20. **`destroyDoorMaxDistance`** (`float` - Default: `1f`)
     - **Description**: The maximum distance at which the ball can destroy doors when it collides with them.
     - **Example**: `2.0f`
+21. **`syncInterval`** (`float` - Default: `0.1f`)
+    - **Description**: Network sync interval
+    - **Example**: `0.06f`
+22. **`movementSmoothing`** (`byte` - Defaulr: `128`)
+    - **Description**: Admin toy movement smooth
+    - **Example**: 52
 </details>
 
 ---
@@ -253,6 +259,8 @@ BouncyBallSpawner.SpawnBouncyBall(
     kickForceUp: 3.0f,
     checkOnlyDistance: true,
     destroyDoors: true,
-    destroyDoorMaxDistance: 2.0f
+    destroyDoorMaxDistance: 2.0f,
+    syncInterval: 0.08f,
+    movementSmoothing: 150
 );
 ```
