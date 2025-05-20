@@ -222,12 +222,15 @@ namespace BouncyBall
             
             NetworkServer.Spawn(ls.gameObject);
             NetworkServer.Spawn(ball.AdminToyBase.gameObject);
-
+            ball.AdminToyBase.syncInterval = 0.06f;
+            ls.syncInterval = 0.06f;
+            ls.NetworkMovementSmoothing = 128;
+            ball.AdminToyBase.NetworkMovementSmoothing = 128;
             Timing.CallDelayed(0.2f, () =>
             {
                 Rigidbody rb = ball.AdminToyBase.gameObject.AddComponent<Rigidbody>();
                 rb.mass = mass;
-                rb.drag = drag;
+                rb.linearDamping = drag;
                 rb.detectCollisions = true;
                 rb.interpolation = interpolation;
 

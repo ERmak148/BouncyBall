@@ -35,11 +35,13 @@ namespace BouncyBall
         /// <param name="checkOnlyDistance">Whether to check only the distance without angle consideration (default is false).</param>
         /// <param name="destroyDoors">Whether the ball can destroy doors on impact (default is false).</param>
         /// <param name="destroyDoorMaxDistance">Maximum distance to destroy a door (default is 1f).</param>
+        /// <param name="syncInterval">Network sync interval</param>
+        /// <param name="movementSmoothing">Admin toy movement smooth</param>
         public static void SpawnBouncyBall(Vector3 position, Vector3 scale, float lightIntensity = 0.35f, float lightRange = 1.6f,
             float mass = 0.8f, float drag = 0.3f, RigidbodyInterpolation interpolation = RigidbodyInterpolation.Interpolate, float bounciness = 0.6f, float dynamicFriction = 0.6f,
             float staticFriction = 0.4f, PhysicsMaterialCombine bounceCombine = PhysicsMaterialCombine.Maximum, float colorChangeSpeed = 0.1f, float screenVerticalDiv = 2.13f,
             float maxLookAngle = 34, float maxPlayerDistance = 1.5f, float kickForceMul = 1f, float kickForceUp = 2.7f, bool checkOnlyDistance = false,
-            bool destroyDoors = false, float destroyDoorMaxDistance = 1f)
+            bool destroyDoors = false, float destroyDoorMaxDistance = 1f, float syncInterval = 0.1f, byte movementSmoothing = 128)
         {
             Primitive ball = Primitive.Create(
                 PrimitiveType.Sphere,
@@ -72,15 +74,19 @@ namespace BouncyBall
             {
                 ls.ShadowType = LightShadows.None;
             }
+
             
             NetworkServer.Spawn(ls.gameObject);
             NetworkServer.Spawn(ball.AdminToyBase.gameObject);
-            
+            ball.AdminToyBase.syncInterval = syncInterval;
+            ls.syncInterval = syncInterval;
+            ls.NetworkMovementSmoothing = movementSmoothing;
+            ball.AdminToyBase.NetworkMovementSmoothing = movementSmoothing;
             Timing.CallDelayed(0.05f, () =>
             {
                 Rigidbody rb = ball.AdminToyBase.gameObject.AddComponent<Rigidbody>();
                 rb.mass = mass;
-                rb.drag = drag;
+                rb.linearDamping = drag;
                 rb.detectCollisions = true;
                 rb.interpolation = interpolation;
 

@@ -70,14 +70,17 @@ namespace BouncyBall
                 }
 
                 NetworkServer.Spawn(ls.gameObject);
-
+                ball.AdminToyBase.syncInterval = 0.06f;
+                ls.syncInterval = 0.06f;
+                ls.NetworkMovementSmoothing = 128;
+                ball.AdminToyBase.NetworkMovementSmoothing = 128;
                 Timing.CallDelayed(0.2f, () =>
                 {
                     try
                     {
                         Rigidbody rb = ball.AdminToyBase.gameObject.AddComponent<Rigidbody>();
                         rb.mass = 0.8f;
-                        rb.drag = 0.3f;
+                        rb.linearDamping = 0.3f;
                         rb.detectCollisions = true;
                         rb.interpolation = RigidbodyInterpolation.Interpolate;
                         
