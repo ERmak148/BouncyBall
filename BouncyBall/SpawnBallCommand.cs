@@ -131,10 +131,10 @@ namespace BouncyBall
                 return false;
             }
             
-            if (!Enum.TryParse(arguments.At(12), true, out PhysicMaterialCombine bounceCombine)
-                || !Enum.IsDefined(typeof(PhysicMaterialCombine), bounceCombine))
+            if (!Enum.TryParse(arguments.At(12), true, out PhysicsMaterialCombine bounceCombine)
+                || !Enum.IsDefined(typeof(PhysicsMaterialCombine), bounceCombine))
             {
-                response = $"Invalid BounceCombine '{arguments.At(12)}'. Expected one of: {FormatOptions<PhysicMaterialCombine>()}.";
+                response = $"Invalid BounceCombine '{arguments.At(12)}'. Expected one of: {FormatOptions<PhysicsMaterialCombine>()}.";
                 return false;
             }
 
@@ -211,14 +211,13 @@ namespace BouncyBall
             ls.NetworkInnerSpotAngle = 1;
             ls.NetworkScale = Vector3.one;
             ls.transform.localScale = Vector3.one;
-            ls._light.enabled = true;
-            ls._light.cullingMask = -1;
+            ls.enabled = true;
             ls.NetworkRotation = Quaternion.identity;
             ls.transform.rotation = Quaternion.identity;
             ls.transform.parent = ball.AdminToyBase.transform;
             if (!UserSetting<bool>.Get<LightingVideoSetting>(LightingVideoSetting.RenderShadows))
             {
-                ls._light.shadows = LightShadows.None;
+                ls.ShadowType = LightShadows.None;
             }
             
             NetworkServer.Spawn(ls.gameObject);
@@ -232,7 +231,7 @@ namespace BouncyBall
                 rb.detectCollisions = true;
                 rb.interpolation = interpolation;
 
-                PhysicMaterial material = new PhysicMaterial("BouncyBall");
+                PhysicsMaterial material = new PhysicsMaterial("BouncyBall");
                 material.bounciness      = bounciness;
                 material.dynamicFriction = dynamicFric;
                 material.staticFriction  = staticFric;

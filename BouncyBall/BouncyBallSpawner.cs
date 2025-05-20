@@ -37,7 +37,7 @@ namespace BouncyBall
         /// <param name="destroyDoorMaxDistance">Maximum distance to destroy a door (default is 1f).</param>
         public static void SpawnBouncyBall(Vector3 position, Vector3 scale, float lightIntensity = 0.35f, float lightRange = 1.6f,
             float mass = 0.8f, float drag = 0.3f, RigidbodyInterpolation interpolation = RigidbodyInterpolation.Interpolate, float bounciness = 0.6f, float dynamicFriction = 0.6f,
-            float staticFriction = 0.4f, PhysicMaterialCombine bounceCombine = PhysicMaterialCombine.Maximum, float colorChangeSpeed = 0.1f, float screenVerticalDiv = 2.13f,
+            float staticFriction = 0.4f, PhysicsMaterialCombine bounceCombine = PhysicsMaterialCombine.Maximum, float colorChangeSpeed = 0.1f, float screenVerticalDiv = 2.13f,
             float maxLookAngle = 34, float maxPlayerDistance = 1.5f, float kickForceMul = 1f, float kickForceUp = 2.7f, bool checkOnlyDistance = false,
             bool destroyDoors = false, float destroyDoorMaxDistance = 1f)
         {
@@ -64,14 +64,13 @@ namespace BouncyBall
             ls.NetworkInnerSpotAngle = 1;
             ls.NetworkScale = Vector3.one;
             ls.transform.localScale = Vector3.one;
-            ls._light.enabled = true;
-            ls._light.cullingMask = -1;
+            ls.enabled = true;
             ls.NetworkRotation = Quaternion.identity;
             ls.transform.rotation = Quaternion.identity;
             ls.transform.parent = ball.AdminToyBase.transform;
             if (!UserSetting<bool>.Get<LightingVideoSetting>(LightingVideoSetting.RenderShadows))
             {
-                ls._light.shadows = LightShadows.None;
+                ls.ShadowType = LightShadows.None;
             }
             
             NetworkServer.Spawn(ls.gameObject);
@@ -85,7 +84,7 @@ namespace BouncyBall
                 rb.detectCollisions = true;
                 rb.interpolation = interpolation;
 
-                PhysicMaterial material = new PhysicMaterial("BouncyBall");
+                PhysicsMaterial material = new PhysicsMaterial("BouncyBall");
                 material.bounciness      = bounciness;
                 material.dynamicFriction = dynamicFriction;
                 material.staticFriction  = staticFriction;
