@@ -13,14 +13,22 @@ namespace BouncyBall
         public override PluginPriority Priority => PluginPriority.Medium;
         public static BouncyBall instance;
 
+        private EventsHandler _handler;
+
         public override void OnEnabled()
         {
+            _handler = new EventsHandler();
+            Exiled.Events.Handlers.Server.WaitingForPlayers += _handler.OnWaitingForPlayers;
+            
             instance = this;
             base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
+            Exiled.Events.Handlers.Server.WaitingForPlayers -= _handler.OnWaitingForPlayers;
+            _handler = null;
+            
             instance = null;
             base.OnDisabled();
         }

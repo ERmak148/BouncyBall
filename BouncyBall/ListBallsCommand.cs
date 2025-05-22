@@ -29,7 +29,7 @@ namespace BouncyBall
                 response = "You do not have permissions to use this command";
                 return false;
             }
-
+            Log.Info("1");
             Dictionary<ushort, Ball> balls = BallRegistry.GetAllBalls;
 
             if (balls.Count < 1)
@@ -37,22 +37,25 @@ namespace BouncyBall
                 response = "No balls registered";
                 return true;
             }
-
+            Log.Info("2");
             StringBuilder builder = new StringBuilder();
 
             foreach (KeyValuePair<ushort, Ball> kv in balls)
             {
+                Log.Info("3");
                 Vector3 ballCoords = kv.Value.gameObject.transform.position;
-
+                Log.Info("4");
                 Room room = Room.Get(ballCoords);
                 string roomName = "Unknown";
                 string zoneName = "Unknown";
+                Log.Info("5");
                 if (room != null)
                 {
+                    Log.Info("6");
                     roomName = room.Type.ToString();
                     zoneName = room.Zone.ToString();
                 }
-
+                
                 builder.AppendLine($"{kv.Key} - {ballCoords.ToPreciseString()} ({roomName}, {zoneName})");
             }
             

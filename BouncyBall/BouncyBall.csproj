@@ -97,6 +97,7 @@
         <Compile Include="BouncyBall.cs" />
         <Compile Include="BouncyBallSpawner.cs" />
         <Compile Include="DespawnBallCommand.cs" />
+        <Compile Include="EventsHandler.cs" />
         <Compile Include="ListBallsCommand.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SpawnBallCommand.cs" />
