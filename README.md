@@ -24,105 +24,159 @@ This command spawns a glowing, bouncing sphere at another player’s location.
 
 <details>
 
-1. **PlayerId**  
-   - The numeric ID of the player whose position the ball will appear at.  
-   - *Example:* `2`  
+1. **PlayerId**
 
-2. **SizeX**  
-   - How wide the ball is, left to right. Bigger numbers make a wider ball.  
-   - *Example:* `1.5`  
+   * The numeric ID of the player whose position the ball will appear at.
+   * *Example:* `2`
 
-3. **SizeY**  
-   - How tall the ball is, bottom to top. Bigger numbers make a taller ball.  
-   - *Example:* `1.5`  
+2. **SizeX**
 
-4. **SizeZ**  
-   - How deep the ball is, front to back. Bigger numbers make a deeper ball.  
-   - *Example:* `1.5`  
+   * How wide the ball is, left to right.
+   * *Example:* `1.5`
 
-5. **LightIntensity**  
-   - How bright the ball’s glow is. Higher values make it shine more.  
-   - *Example:* `0.35`  
+3. **SizeY**
 
-6. **LightRange**  
-   - How far the glow reaches around the ball. Larger values light up more area.  
-   - *Example:* `1.6`  
+   * How tall the ball is, bottom to top.
+   * *Example:* `1.5`
 
-7. **Mass**  
-   - How heavy the ball feels when it bounces and rolls. Larger values make it heavier.  
-   - *Example:* `0.8`  
+4. **SizeZ**
 
-8. **Drag**  
-   - How quickly the ball slows down in the air. Higher values make it lose speed faster.  
-   - *Example:* `0.3`  
+   * How deep the ball is, front to back.
+   * *Example:* `1.5`
 
-9. **Interpolation**  
-   - How the game smooths the ball’s motion between updates. Options:  
-     - `None` – no smoothing  
-     - `Interpolate` – smooth movement  
-     - `Extrapolate` – predict fast movement  
-   - *Example:* `Interpolate`  
+5. **LightIntensity**
 
-10. **Bounciness**  
-    - How springy the ball is when it hits something. Higher values make it bounce higher.  
-    - *Example:* `0.6`  
+   * How bright the ball's glow is.
+   * *Example:* `0.35`
 
-11. **DynamicFriction**  
-    - How much the ball resists sliding once it’s moving. Higher values slow sliding more.  
-    - *Example:* `0.6`  
+6. **LightRange**
 
-12. **StaticFriction**  
-    - How much the ball resists starting to slide from a standstill. Higher values make it harder to push.  
-    - *Example:* `0.4`  
+   * How far the glow reaches around the ball.
+   * *Example:* `1.6`
 
-13. **BounceCombine**  
-    - How the ball’s springiness mixes with what it hits. Options:  
-      - `Average` – take the average  
-      - `Minimum` – use the lowest value  
-      - `Multiply` – multiply both values  
-      - `Maximum` – use the highest value  
-    - *Example:* `Maximum`  
+7. **LightChangeTime**
 
-14. **ChangeSpeed**  
-    - How fast the ball’s color shifts through the rainbow. Bigger numbers cycle faster.  
-    - *Example:* `0.1`  
+   * Reserved parameter for light color transitions. Currently required by the command but not used by the spawner)
+   * *Example:* `0.1`
 
-15. **VerticalDivider**  
-    - Shapes how steeply you must look up or down to kick the ball. Larger numbers make the vertical view requirement more strict.  
-    - *Example:* `2.13`  
+8. **Mass**
 
-16. **MaxAngle**  
-    - How far to the side you can look and still kick the ball. Measured in degrees from straight ahead.  
-    - *Example:* `34`  
+   * How heavy the ball feels when it bounces and rolls.
+   * *Example:* `0.8`
 
-17. **MaxDistance**  
-    - How close you must be to the ball to kick it. Larger values let you kick from farther away.  
-    - *Example:* `1.5`  
+9. **Drag**
 
-18. **KickForceMul**  
-    - How much your kick strength is multiplied. Higher values send the ball flying faster.  
-    - *Example:* `1.0`  
+   * How quickly the ball slows down in the air.
+   * *Example:* `0.3`
 
-19. **KickForceUp**  
-    - How much of your kick lifts the ball into the air. Higher values give it more vertical pop.  
-    - *Example:* `2.7`  
+10. **Interpolation**
 
-20. **CheckOnlyDistance**  
-    - If `true`, the ball ignores viewing angle and only checks if you’re close enough to kick.  
-    - *Example:* `false`  
+    * How the game smooths the ball's motion between updates.
+    * Options:
 
-21. **DestroyDoors**  
-    - If `true`, a fast-moving ball can break open doors it hits.  
-    - *Example:* `false`  
+      * `None`
+      * `Interpolate`
+      * `Extrapolate`
+    * *Example:* `Interpolate`
 
-22. **DestroyMaxDistance**  
-    - How far ahead of the ball it can break doors. Larger values let it hit doors from farther away.  
-    - *Example:* `0.5`  
+11. **Bounciness**
+
+    * How springy the ball is when it hits something.
+    * *Example:* `0.6`
+
+12. **DynamicFriction**
+
+    * How much the ball resists sliding once it's moving.
+    * *Example:* `0.6`
+
+13. **StaticFriction**
+
+    * How much the ball resists starting to slide from a standstill.
+    * *Example:* `0.4`
+
+14. **BounceCombine**
+
+    * How the ball's springiness mixes with what it hits.
+    * Options:
+
+      * `Average`
+      * `Minimum`
+      * `Multiply`
+      * `Maximum`
+    * *Example:* `Maximum`
+
+15. **ChangeSpeed**
+
+    * How fast the ball's color shifts through the rainbow.
+    * *Example:* `0.1`
+
+16. **VerticalDivider**
+
+    * Shapes how steeply you must look up or down to kick the ball.
+    * *Example:* `2.13`
+
+17. **MaxAngle**
+
+    * Maximum horizontal angle (degrees) at which a player can still kick the ball.
+    * *Example:* `34`
+
+18. **MaxDistance**
+
+    * Maximum distance from which a player can kick the ball.
+    * *Example:* `1.5`
+
+19. **KickForceMul**
+
+    * Multiplier applied to kick force.
+    * *Example:* `1.0`
+
+20. **KickForceUp**
+
+    * Additional upward force applied when kicking.
+    * *Example:* `2.7`
+
+21. **CheckOnlyDistance**
+
+    * If `true`, only distance is checked when determining whether a player can kick the ball.
+    * *Example:* `false`
+
+22. **DestroyDoors**
+
+    * If `true`, the ball can destroy doors when moving fast enough.
+    * *Example:* `false`
+
+23. **DestroyMaxDistance**
+
+    * Maximum distance used when checking for door destruction.
+    * *Example:* `1.0`
+
+24. **DestroyMinVelocitySqr**
+
+    * Minimum squared velocity required before the ball can destroy doors.
+    * *Example:* `1.0`
+
+25. **SyncInterval**
+
+    * Network synchronization interval for ball movement.
+    * *Example:* `0.05`
+
+26. **LightSyncInterval**
+
+    * Network synchronization interval for light updates.
+    * *Example:* `0.08`
+
+27. **MovementSmoothing**
+
+    * Movement smoothing factor (0–255).
+    * *Example:* `128`
+
 </details>
 
+### Example
 
-### Example:
-`spawnball 2 0.7 0.7 0.7 0.35 1.6 1.2 0.3 Interpolate 0.6 0.5 0.4 Maximum 0.1 2.13 34 1.5 1 2.7 false false 0.1`
+```text
+spawnball 2 0.7 0.7 0.7 0.35 1.6 0.1 0.8 0.3 Interpolate 0.6 0.6 0.4 Maximum 0.1 2.13 34 1.5 1 2.7 false false 1 1 0.05 0.08 128
+```
 
 ## BouncyBall API Documentation for Developers
 
